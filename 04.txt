@@ -44,3 +44,4 @@ server activates:   UPDATES -> https://studies.cs.helsinki.fi/exampleapp/data.js
                     response.status= 302
 server->browser: updated updated HTML document
 deactivate server
+----------------------------------------------------------------------
