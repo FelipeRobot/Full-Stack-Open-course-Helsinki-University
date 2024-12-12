@@ -1,0 +1,46 @@
+Creating a new note on https://studies.cs.helsinki.fi/exampleapp/notes
+----------------------------------------------------------------------
+
+participant browser
+participant server 
+participant user 
+
+
+----------------------------------------------------------------------
+-Opening web page-
+
+browser->server: GET studies.cs.helsinki.fi	/exampleapp/notes
+server activates: reponse.status= 200
+server-->>browser: HTML document
+deactivate server
+
+browser->server: GET studies.cs.helsinki.fi	/exampleapp/main.css
+server activates: reponse.status= 200
+server-->>browser: the css file
+deactivate server
+
+
+browser->server: GET studies.cs.helsinki.fi/exampleapp/main.js
+server activates: reponse.status= 200
+server-->>browser: the JavaScript file
+deactivate server
+
+browser->server: GET studies.cs.helsinki.fi/exampleapp/data.json
+server activates: reponse.status= 200
+
+-Capturing user input-
+
+user->browser: <input type="text" name="note"> = 'Test'
+user->browser: clickOn <input type="submit" value="Save">
+
+-Using POST request- 
+
+browser->server: POST 	studies.cs.helsinki.fi/exampleapp/new_note:
+                    {
+                        note: "Test"
+                    }
+
+server activates:   UPDATES -> https://studies.cs.helsinki.fi/exampleapp/data.json
+                    response.status= 302
+server->browser: updated updated HTML document
+deactivate server
