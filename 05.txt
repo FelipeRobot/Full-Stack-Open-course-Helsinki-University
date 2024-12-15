@@ -1,0 +1,31 @@
+-Single page aplication diagram-
+----------------------------------------------------------------------
+
+participant browser
+participant server 
+
+
+----------------------------------------------------------------------
+
+-Opening https://studies.cs.helsinki.fi/exampleapp/spa-
+
+browser-> server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+server activates: response.status: 200
+server-->>browser: spa.html
+desactivate server
+
+browser->server: GET studies.cs.helsinki.fi	/exampleapp/main.css
+server activates: reponse.status= 200
+server-->>browser: main.css
+desactivate server
+
+
+browser-> server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server activates: response.status: 200
+server-->>browser: spa.js
+desactivate server
+
+browser->server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server activates: reponse.status= 200
+server-->>browser: data.json
+desactivate server

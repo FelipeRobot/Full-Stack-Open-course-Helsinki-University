@@ -11,22 +11,24 @@ participant user
 
 browser->server: GET studies.cs.helsinki.fi	/exampleapp/notes
 server activates: reponse.status= 200
-server-->>browser: HTML document
-deactivate server
+server-->>browser: notes.html
+desactivate server
 
 browser->server: GET studies.cs.helsinki.fi	/exampleapp/main.css
 server activates: reponse.status= 200
-server-->>browser: the css file
-deactivate server
+server-->>browser: main.css
+desactivate server
 
 
 browser->server: GET studies.cs.helsinki.fi/exampleapp/main.js
 server activates: reponse.status= 200
-server-->>browser: the JavaScript file
-deactivate server
+server-->>browser: main.js
+desactivate server
 
 browser->server: GET studies.cs.helsinki.fi/exampleapp/data.json
 server activates: reponse.status= 200
+server-->>browser: data.json
+desactivate server
 
 -Capturing user input-
 
