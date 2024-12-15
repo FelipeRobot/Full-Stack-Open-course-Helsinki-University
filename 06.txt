@@ -1,0 +1,16 @@
+-Capturing user input-
+
+user->browser: <input type="text" name="note"> = 'Test'
+user->browser: clickOn <input type="submit" value="Save">
+
+-Using POST request- 
+
+browser->server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+                    {
+                        note: "Test"
+                    }
+
+server activates:   UPDATES -> https://studies.cs.helsinki.fi/exampleapp/data.json
+                    response.status= 201
+server->browser: updated updated HTML document
+deactivate server
