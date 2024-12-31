@@ -7,13 +7,13 @@ const App = () => {
   const [bad, setBad] = useState(0)
 
   const goodHandler = () =>{
-    
+    setGood(good +1);
   }
   const neutralHandler = () =>{
-
+    setNeutral(neutral+1);
   }
   const badHandler = () =>{
-
+    setBad(bad+1);
   }
 
 
@@ -24,6 +24,9 @@ const App = () => {
       <button onClick={neutralHandler}>neutral</button>
       <button onClick={badHandler}>bad</button>
       <h1>Statistics</h1>
+      <h3>Good = {good}</h3>
+      <h3>Neutral = {neutral}</h3>
+      <h3>Bad = {bad}</h3>
     </div>
   )
 }
