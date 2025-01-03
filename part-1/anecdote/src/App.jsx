@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 const App = () => {
-  
   const anecdotes = [
     'If it hurts, do it more often.',
     'Adding manpower to a late software project makes it later!',
@@ -13,42 +12,31 @@ const App = () => {
     'The only way to go fast, is to go well.'
   ]
 
-  let anecdotesJSON={};
-
-  for(let i = 0; i<anecdotes.length; i++ ){
-    anecdotesJSON[anecdotes[i]] =0;
-  }
-  
-  console.log('Test: '+ anecdotesJSON[anecdotes[0]]);
-
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0))
 
-
-  const anecdotesButtonHandler = ()=>{
-    setSelected(selected+1);
-  };
-  
-  const voteThis =()=>{
-    anecdotesJSON[anecdotes[selected]]++;
-    console.log(JSON.stringify(anecdotesJSON, null, 2));
-
+  const anecdotesButtonHandler = () => {
+    setSelected((selected + 1) % anecdotes.length)
   }
-  
-  //No se está mostrando bien el número de votos
+
+  const voteThis = () => {
+    const newVotes = [...votes]
+    newVotes[selected] += 1
+    setVotes(newVotes)
+  }
+
   return (
     <div>
       {anecdotes[selected]}
       <div>
-        Votes for this anecdote: {anecdotesJSON[anecdotes[selected]]} 
+        Votes for this anecdote: {votes[selected]}
       </div>
       
       <div>
         <button onClick={anecdotesButtonHandler}>Next anecdote</button>
         <button onClick={voteThis}>Vote this anecdote</button>
       </div>
-      
     </div>
-
   )
 }
 
