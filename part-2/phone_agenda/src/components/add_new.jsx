@@ -8,8 +8,6 @@ const Add_new =(props) =>{
         setNumberHandler,
         newNameHandler
     } = props;
-    /*--Debug--*/
-
 
     return(
 

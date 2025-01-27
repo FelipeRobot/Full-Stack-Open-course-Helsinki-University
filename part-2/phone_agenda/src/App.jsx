@@ -1,15 +1,30 @@
+import axios from 'axios'
+import { useEffect } from 'react';
 import { useState } from 'react'
 import Search from './components/searchComponent';
 import Numbers from './components/NumberListComponent';
 import Add_new from './components/add_new';
 
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-123456' },
-    { name: 'Ada Lovelace', number: '39-44-5323523', },
-    { name: 'Dan Abramov', number: '12-43-234345' },
-    { name: 'Mary Poppendieck', number: '39-23-6423122' }
-  ])
+
+  //const promise = axios.get('http://localhost:3001/persons')
+
+  const fetchPersons = async()=>{
+    try{
+
+      const response = await axios.get('http://localhost:3001/persons');
+
+      console.log('Response: ' + response.data );
+
+    }
+    catch(e){
+      console.log(e.error);
+    }
+
+  }
+
+
+  const [persons, setPersons] = useState();
 
   //console.log('Intial person:' + persons[0].name);
 
@@ -21,6 +36,20 @@ const App = () => {
     {}
 
   ])
+
+  
+  useEffect(() => {
+    axios.get('http://localhost:3001/persons')
+      .then(response => {
+        setPersons(response.data); // Actualiza el estado con los datos
+      })
+      .catch(error => {
+        console.error('Error al obtener los datos:', error);
+      });
+  }, []);
+
+  //Debug Debug
+  fetchPersons();
 
 
   const newNameHandler =(event)=>{

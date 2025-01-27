@@ -5,14 +5,13 @@ const Search = (props) =>{
     
     const persons = props.persons;    
     const filtered_list = props.filtered_list;
-    const set_filtered_list = props.set_filtered_list;
+    let set_filtered_list = props.set_filtered_list;
+
+    
 
     
     const search_handler =(event)=>{
         event.preventDefault();
-
-
-
 
         persons.map(person=>(
             console.log(person.name)
@@ -27,9 +26,6 @@ const Search = (props) =>{
                 person.name.toLowerCase().includes(search_value)
             );
         }
-
-
-       
 
         set_filtered_list(newFilteredList);
 
