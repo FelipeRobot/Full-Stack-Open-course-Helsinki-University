@@ -7,26 +7,10 @@ import Add_new from './components/add_new';
 
 const App = () => {
 
-  //const promise = axios.get('http://localhost:3001/persons')
-
-  const fetchPersons = async()=>{
-    try{
-
-      const response = await axios.get('http://localhost:3001/persons');
-
-      console.log('Response: ' + response.data );
-
-    }
-    catch(e){
-      console.log(e.error);
-    }
-
-  }
 
 
   const [persons, setPersons] = useState();
 
-  //console.log('Intial person:' + persons[0].name);
 
   const [newName, setNewName] = useState('');
 
@@ -49,7 +33,6 @@ const App = () => {
   }, []);
 
   //Debug Debug
-  fetchPersons();
 
 
   const newNameHandler =(event)=>{
