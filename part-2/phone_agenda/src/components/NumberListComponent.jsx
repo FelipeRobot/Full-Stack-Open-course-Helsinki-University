@@ -1,4 +1,4 @@
-
+import { deletePersonHandler } from "../utils/deleteContact"
 
 const Numbers = (props) =>{
 
@@ -11,11 +11,22 @@ const Numbers = (props) =>{
                 key={persons.name}
             >       
                 {persons.map(person =>(
-                    <p
-                        key={person.name}
-                    >{person.name} - {person.number}</p>
-                ))}
+                <div
+                key={person.name}
+                >
+                    <p>
+                        {person.name} - {person.number}
+                    </p>
+                    <button
+                        onClick={()=>deletePersonHandler(person)}
+                        >
+                        delete
+                        </button>
+                </div>
+                
 
+                ))}
+                
             </div>
             
         </div>
