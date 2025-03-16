@@ -4,13 +4,14 @@ import { useState } from 'react'
 import Search from './components/searchComponent';
 import Numbers from './components/NumberListComponent';
 import Add_new from './components/add_new';
-import { createPerson } from './Services/personServides';
+import { createPerson, getAllPersons } from './Services/personServides';
+
+
+
 
 const App = () => {
 
-
-
-  const [persons, setPersons] = useState();
+  const [persons, setPersons] = useState([]);
 
   const [newName, setNewName] = useState('');
 
@@ -20,7 +21,31 @@ const App = () => {
     {}
   ])
 
+/*-------PART 3 adds-------*/
+
+useEffect(()=>{
   
+  const fetchData = async ()=>{
+    try{
+      const data = await getAllPersons();
+      setPersons(data);
+      console.log('Debug data:', data);
+    }catch(error){
+      console.error('Error fetching data:', error);
+    }
+  }
+  fetchData();
+}, []);
+
+useEffect(() => {
+  console.log('Persons actualizado:', persons);
+}, [persons]);
+
+
+/*-------PART 2    -------*/
+
+  //@DEPRECATED: Part 2 fetching data from local host
+/*  
   useEffect(() => {
     axios.get('http://localhost:3001/persons')
       .then(response => {
@@ -30,11 +55,8 @@ const App = () => {
         console.error('Error al obtener los datos:', error);
       });
   }, []);
+*/
 
-
-  
-
-  //Debug Debug
 
 
   const newNameHandler =(event)=>{
