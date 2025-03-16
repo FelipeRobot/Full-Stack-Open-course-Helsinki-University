@@ -2,6 +2,17 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3001/persons';
 
+const baseUrl = 'http://localhost:8080'
+
+
+export const getAllPersons = async() =>{
+    try{
+        const response = await axios.get(baseUrl + '/persons')
+        return response.data
+    }catch(error){
+        console.error('Error fetching persons: ', error);
+    }
+}
 
 export const createPerson = async (newPerson) =>{
     try{

@@ -5,6 +5,7 @@ import Search from './components/searchComponent';
 import Numbers from './components/NumberListComponent';
 import Add_new from './components/add_new';
 import { createPerson } from './Services/personServides';
+
 const App = () => {
 
 
@@ -52,8 +53,8 @@ const App = () => {
     };
 
     let aux;
-    //En efecto, el error constaba en esto y en que no tenemos ninguna API de post
-    //El error puede que esté aquí, ya que se está agregando por cada vuelta
+
+
     persons.map(person =>(
       newName === person.name ? 
       alert(newName + ' is already added to the phonebook.') :
